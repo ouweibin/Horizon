@@ -32,11 +32,12 @@
       }
     ],
     "hackernews": {
-      "enabled": true,
+      "enabled": false,
       "fetch_top_stories": 20,
       "min_score": 100
     },
     "rss": [
+"rss": [
       {
         "name": "Hugging Face Daily Trending",
         "url": "https://rsshub.app/huggingface/trending/daily",
@@ -48,10 +49,46 @@
         "url": "https://simonwillison.net/atom/everything/",
         "enabled": true,
         "category": "ai-tools"
+      },
+      {
+        "name": "Reddit Singularity",
+        "url": "https://rsshub.app/reddit/subreddit/singularity",
+        "enabled": true,
+        "category": "ai-news"
+      },
+      {
+        "name": "TechCrunch AI",
+        "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "enabled": true,
+        "category": "ai-news"
+      },
+      {
+        "name": "VentureBeat AI",
+        "url": "https://venturebeat.com/category/ai/feed/",
+        "enabled": true,
+        "category": "ai-business"
+      },
+      {
+        "name": "The Rundown AI",
+        "url": "https://rsshub.app/blogs/rundown-ai",
+        "enabled": true,
+        "category": "ai-newsletter"
+      },
+      {
+        "name": "TLDR AI",
+        "url": "https://rsshub.app/tldr/ai",
+        "enabled": true,
+        "category": "ai-newsletter"
+      },
+      {
+        "name": "机器之心",
+        "url": "https://rsshub.app/syncedreview/posts",
+        "enabled": true,
+        "category": "china-ai"
       }
     ],
     "reddit": {
-      "enabled": true,
+      "enabled": false,
       "subreddits": [
         {
           "subreddit": "Singularity",
