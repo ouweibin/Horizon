@@ -53,3 +53,34 @@ jobs:
           commit_message: "📝 Daily Summary: ${{ env.DATE }}"
           publish_branch: gh-pages
           enable_jekyll: true
+
+# 这一步会在 Horizon 运行成功后，读取它刚刚生成的 md 文件并直发钉钉
+      - name: Send Summary to DingTalk
+        if: success()
+        run: |
+          # 1. 找到最新生成的本地中文早报文件路径
+          REPORT_FILE=$(ls data/summaries/*-zh.md | tail -n 1)
+          
+          # 2. 读取文件内容并做 JSON 安全转义（防止 markdown 的换行符导致 JSON 报错）
+          SUMMARY_CONTENT=$(cat "$REPORT_FILE" | jq -s -R .)
+          
+          # 3. 组装钉钉绝对能识别的标准报文（最外层硬编码 msgtype）
+          JSON_BODY=$(cat <<EOF
+          {
+            "msgtype": "markdown",
+            "markdown": {
+              "title": "Briefing",
+              "text": "### Briefing - Horizon AI新闻早报\n\n"
+            }
+          }
+          EOF
+          )
+          
+          # 4. 用 jq 将新闻内容合并进钉钉报文中
+          FINAL_JSON=$(echo "$JSON_BODY" | jq --argjson content "$SUMMARY_CONTENT" '.markdown.text += $content')
+          
+          # 5. 绕过软件，直接用 Linux 的 curl 扔给钉钉
+          curl -X POST "${{ secrets.HORIZON_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d "$FINAL_JSON"
+
