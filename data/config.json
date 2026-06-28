@@ -92,7 +92,7 @@
       "subreddits": [
         {
           "subreddit": "Singularity",
-          "enabled": true,
+          "enabled": false,
           "sort": "hot",
           "time_filter": "day",
           "fetch_limit": 15,
@@ -100,7 +100,7 @@
         },
         {
           "subreddit": "MachineLearning",
-          "enabled": true,
+          "enabled": false,
           "sort": "hot",
           "time_filter": "day",
           "fetch_limit": 15,
