@@ -106,21 +106,13 @@
     "default_group_limit": null
   },
   "webhook": {
-    "enabled": true,
-    "url_env": "HORIZON_WEBHOOK_URL",
-    "delivery": "summary",
-    "overview_position": "first",
-    "platform": "dingtalk",
-    "layout": "markdown",
-    "fallback_layout": "markdown",
-    "languages": ["zh"],
-    "request_body": {
-      "msgtype": "markdown",
-      "markdown": {
-        "title": "Briefing - Horizon AI新闻早报",
-        "text": "### Briefing - Horizon AI新闻早报\n\n#{summary}\n\n---\n*重要资讯筛选: #{important_items}/#{all_items}*"
-      }
-    },
-    "headers": ""
-  }
+      "enabled": true,
+      "url_env": "HORIZON_WEBHOOK_URL",
+      "delivery": "summary",
+      "overview_position": "first",
+      "platform": "dingtalk",
+      "layout": "markdown",
+      "fallback_layout": "markdown",
+      "languages": ["zh"]
+    }
 }
